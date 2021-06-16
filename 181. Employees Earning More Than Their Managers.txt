@@ -1,0 +1,10 @@
+# here need to find the emp that make more then ther 
+# manager, so we have id for any emp - and we have managid that tells us 
+# who is the emp manager 
+# joe he is an emp of the manager sam 
+
+select e.Name as Employee # pick the names 
+from Employee as e
+left join Employee as m # 
+on m.Id = e.ManagerId 
+where e.Salary > m.Salary
