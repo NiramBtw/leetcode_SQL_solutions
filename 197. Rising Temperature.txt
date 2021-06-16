@@ -1,0 +1,26 @@
+# ind all dates' id
+# makiing  2 vars by id 
+# d1.id > d2.id ?
+#select d1.Id 
+#from Weather as d1, Weather as d2
+#where  d1.temperature > d2.temperature and DATEDIFF(d1.recordDate, d2.recordDate    )=1;
+#
+#can use join for less complex 
+#
+#select d1.id
+#from weather d1
+#join weather d2
+#    on d1.recordDate  = adddate(d2.recorddate, interval 1 day)
+#    and d1.temperature>d2.temperature;
+# can see that left join do same logic but not that afic 
+
+
+select d1.id
+from Weather d1
+left join Weather d2
+on d1.recordDate=date_add(d2.recordDate, interval 1 day)
+where d1.Temperature>d2.Temperature
+
+
+
+
