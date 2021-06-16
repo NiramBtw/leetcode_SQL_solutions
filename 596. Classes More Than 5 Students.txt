@@ -1,0 +1,12 @@
+# logic - couuntt the class by num of stud then pick wwhere >5 
+#
+#select class
+#from courses 
+#group by class having count(distinct student)>=5;
+#
+#using an aliases can do life ez, and select that from satrt willl save run tiimme  
+#thhen just pick the class 5 or moer
+select class from (select class, count(distinct(student)) as class_count
+from courses
+group by class) as s
+where s.class_count >= 5
