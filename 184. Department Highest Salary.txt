@@ -1,0 +1,14 @@
+# find employees who have the highest salary in each of the departments
+# Department | Employee | Salary
+# 1. look high salary per department first -max() by DepartmentId
+# 2. then creat the final table column 
+# 3. joinnig the to tables - by the dep.id that mach the id from the Department table
+#
+select Department.Name as Department ,Employee.Name as Employee, Salary 
+from Employee join Department
+on Employee.DepartmentId = Department.Id
+where (DepartmentId , Salary)
+# hold the highest salary
+in (select DepartmentId,max(Salary)
+from Employee
+group by DepartmentId)
