@@ -1,0 +1,47 @@
+# need to creat the same table but in a diff way 
+#the col will be by m rev 
+#the vals will be the rev 
+# if id dont have rev in a month = null
+# i think we need 2 sum the rev 
+# try use sum + if to pull it out 
+#and then group it by the id 
+
+
+#select id,
+#sum(if(month = 'Jan', revenue ,null)) as Jan_Revenue,
+#sum(if(month = 'Feb', revenue ,null)) as Feb_Revenue,
+#sum(if(month = 'Mar', revenue ,null)) as Mar_Revenue,
+#sum(if(month = 'Apr', revenue ,null)) as Apr_Revenue,
+#sum(if(month = 'May', revenue ,null)) as May_Revenue,
+#sum(if(month = 'Jun', revenue ,null)) as Jun_Revenue,
+#sum(if(month = 'Jul', revenue ,null)) as Jul_Revenue,
+#sum(if(month = 'Aug', revenue ,null)) as Aug_Revenue,
+#sum(if(month = 'Sep', revenue ,null)) as Sep_Revenue,
+#sum(if(month = 'Oct', revenue ,null)) as Oct_Revenue,
+#sum(if(month = 'Nov', revenue ,null)) as Nov_Revenue,
+#sum(if(month = 'Dec', revenue ,null)) as Dec_Revenue
+#from Department 
+#group by id
+#
+#
+# i just need to pot , after any sum stat :)
+# now try to do it better way  
+
+select
+id,
+max(case when month = 'Jan' then revenue else null end) as Jan_revenue,
+max(case when month = 'Feb' then revenue else null end) as Feb_revenue,
+max(case when month = 'Mar' then revenue else null end) as Mar_revenue,
+max(case when month = 'Apr' then revenue else null end) as Apr_revenue,
+max(case when month = 'May' then revenue else null end) as May_revenue,
+max(case when month = 'Jun' then revenue else null end) as Jun_revenue,
+max(case when month = 'Jul' then revenue else null end) as Jul_revenue,
+max(case when month = 'Aug' then revenue else null end) as Aug_revenue,
+max(case when month = 'Sep' then revenue else null end) as Sep_revenue,
+max(case when month = 'Oct' then revenue else null end) as Oct_revenue,
+max(case when month = 'Nov' then revenue else null end) as Nov_revenue,
+max(case when month = 'Dec' then revenue else null end) as Dec_revenue
+from Department
+group by id
+order by id;
+
