@@ -1,0 +1,5 @@
+# im conting the emals as catt var if >1 then itts a ddup
+SELECT Email
+FROM Person
+GROUP BY Email      
+HAVING COUNT(Email) > 1
