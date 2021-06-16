@@ -1,0 +1,33 @@
+# at least three times in a row
+# join?, with 3 entrys 
+#after that we need to work on the copy b=Logs that we make 
+#then comper them by id looking on the nums 
+# for the first run i got wrong - fixing by using distinct 
+#
+#select distinct a.Num as ConsecutiveNums
+#from Logs as a
+#join Logs as b 
+#on a.Id = b.Id + 1 and a.Num = b.Num    # here we make 2 ent
+#join Logs as c
+#on a.Id = c.Id + 2 and a.Num = c.Num
+# after solv trying to make it better 
+# using left joins with same logic 
+
+#select distinct a.Num as ConsecutiveNums
+#from Logs a
+#left join Logs b on a.id + 1 = b.id
+#left join Logs c on b.id +1 = c.id
+#where a.Num = b.Num
+#and b.Num = c.Num
+
+# making it beeter same logic using inner join
+
+select distinct a.Num as ConsecutiveNums
+from Logs a
+inner join Logs b 
+    on a.id = b.id - 1
+inner join Logs c 
+    on b.id = c.id - 1
+where a.Num = b.Num 
+    and b.Num = c.Num;
+
