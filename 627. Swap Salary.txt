@@ -1,0 +1,21 @@
+# the sex 'key' is an enum m\f and need 2 swap them up
+# any m->f 
+# so any case of f = m any else will be f as well cuz its an enum 
+
+#update Salary 
+#set sex = case when sex = 'f' then 'm'
+#              else 'f'
+#                  end
+# tyring to make it more efficiency              
+#update salary 
+#set sex = if(sex='m','f','m')
+# a bit better can do much better 
+
+update salary
+set sex = (case when sex = 'm' then 'f' 
+            else 'm' end)
+
+
+
+
+
