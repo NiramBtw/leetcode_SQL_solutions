@@ -1,0 +1,27 @@
+select max(Salary) as SecondHighestSalary 
+from Employee 
+where Salary not in (select max(Salary) from Employee);
+
+# filter the second high salary from the employee table, 
+#first try
+#select SecondHighestSalary #the new table
+#from (select Salary as SecondHighestSalary ,rank() over(order by Salary ) as srank 
+#from Employee) as a where srank =2 
+#second try
+#select CASE WHEN COUNT(DISTINCT(Salary)) <= 1 THEN null 
+#ELSE (select Salary from Employee order by Salary desc limit 1, 1)
+#END AS SecondHighestSalary 
+#FROM Employee
+# 3 try 
+#select max(Salary) as SecondHighestSalary 
+#from Employee
+#where Salary < (select max(Salary) from Employee)
+#
+#an other way is to order by the salary and then 
+#pick sec row with limit
+#not return null 
+#select Salary as SecondHighestSalary
+#from Employee
+#order by Salary desc
+#limit 1 offset 1;
+# by adding not in will make nulls 
