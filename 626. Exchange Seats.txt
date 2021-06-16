@@ -1,0 +1,51 @@
+# first the id - is for the seats , so need to swap student only 
+# because we have odd num so the last student  will stay same 
+# 1. 1 will go to 2 and 2 will go to 1 
+# 2. because its inside swaping im thinking if \ case when - on the id  
+# 3. after swaping ids need to re register
+# keep that 5 is a special case
+# if(condition, what happend if true , what happend if false )
+#
+#select if(id % 2 =0 ,id -1 ,id + 1) as student 
+#from seat 
+# {"headers": ["student"], "values": [[2], [1], [4], [3], [6]]}
+# now need to add the special case
+#
+# if(id < (select max(id) from seat) -> filter 
+# if(id % 2 =0 ,id- 1 ,id+ 1) 
+# if(id % 2 =0 ,id- 1 ,id) -> special case
+
+#select if(id < (select max(id) from seat) , if(id % 2 =0 ,id- 1 ,id+ 1), if(id % 2 =0 ,id- 1 ,id)) as id, student from seat
+#order by id 
+
+# now try to work with case when 
+
+select 
+      case
+        when id%2 = 0 then id-1
+        when id%2 =1 and id <(select count(*) from seat) then id+1
+        else id
+       end as id,
+    student
+    
+from seat
+order by id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
