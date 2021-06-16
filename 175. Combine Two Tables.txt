@@ -1,0 +1,15 @@
+# picking the FirstName, LastName, City, State for any PersonId 
+#so needed to make sure any p.id is in the person table  = to the p.id in 
+#the address table 
+#if empty city -> null
+
+#select FirstName, LastName, City, State
+#from Person as P left join Address as A
+#on P.PersonId = A.PersonId
+
+# try to make it faster
+
+
+select Person.FirstName, Person.LastName, Address.City, Address.State
+from Person 
+left join Address on Person.PersonId=Address.PersonId
