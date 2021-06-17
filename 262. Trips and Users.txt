@@ -12,3 +12,14 @@ and Client_Id not in (select Users_Id from Users where Banned = 'Yes')
 and Driver_Id not in (select Users_Id from Users where Banned = 'Yes')
 group by Request_at
       
+#sec way 
+
+select Request_at as Day, 
+ROUND(count(case when Trips.Status != 'completed' then 1 else null end) / count(*), 2) as 'Cancellation Rate' 
+from Trips 
+where Client_ID in (
+    select distinct Users_Id from Users where Banned = 'No') 
+AND Driver_ID IN (
+    select distinct Users_Id from Users where Banned = 'No')
+group by Day
+having(Day between '2013-10-01' and '2013-10-03')
