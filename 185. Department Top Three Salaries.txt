@@ -10,11 +10,11 @@
 
 select Department.Name as 'Department', emp.Name as 'Employee' , emp.Salary
 from (select Name, DepartmentId ,Salary,
-dense_rank() over(partition by DepartmentId order by Salary desc ) as rk
-from Employee) as emp
-join Department
-on emp.DepartmentId = Department.Id
-where rk < 4
+dense_rank() over(partition by DepartmentId order by Salary desc ) as rk 
+from Employee) as emp # the sub table 
+join Department 
+on emp.DepartmentId = Department.Id # joinnig the tables base on id 
+where rk < 4 # picking the top 3 ranks 
 
 
 
