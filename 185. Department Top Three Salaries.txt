@@ -1,0 +1,27 @@
+# who are high earners in each of the departments
+# high earner = top 3 
+# top nx per y 
+# 1. using ranking to rank all employee salarys - then we dont have salary just rank like id 
+# that hold it in a sub query 
+# 2. filter top 3
+# 3. attach their department  (join)
+# using dense_rank() will allow ties
+# 
+
+select Department.Name as 'Department', emp.Name as 'Employee' , emp.Salary
+from (select Name, DepartmentId ,Salary,
+dense_rank() over(partition by DepartmentId order by Salary desc ) as rk
+from Employee) as emp
+join Department
+on emp.DepartmentId = Department.Id
+where rk < 4
+
+
+
+
+
+
+
+
+
+
