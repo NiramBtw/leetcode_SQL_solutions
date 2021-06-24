@@ -1,0 +1,6 @@
+# from the emp table by empId and name 
+# join the bonus table 
+select name , bonus 
+from Employee e
+join Bonus b
+on e.empId = b.empId
