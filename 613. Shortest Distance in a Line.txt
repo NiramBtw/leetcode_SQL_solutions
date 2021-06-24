@@ -1,0 +1,7 @@
+select scope.dis as shortest
+from(select abs(p.x-s.x) as dis
+        from point as p
+        left join point as s 
+            on p.x != s.x)  as scope
+order by scope.dis asc
+limit 1
