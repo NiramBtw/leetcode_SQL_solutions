@@ -1,0 +1,5 @@
+select customer_number 
+from Orders
+group by customer_number    # add by looking on the cn
+order by count(order_number) desc   # from top to b - the cunt of the orders by the grouping 
+limit 1 # pick first row 
