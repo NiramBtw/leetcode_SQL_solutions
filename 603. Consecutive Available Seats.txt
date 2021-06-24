@@ -1,0 +1,20 @@
+# order consecutive seats
+
+
+# using lag and lead 
+#select seat_id
+#from(select seat_id, free, lag(free) over () as lg ,
+#     lead(free) over() as ld 
+#     from cinema) as tmp
+#where tmp.free = 1 and (tmp.lg = 1 or tmp.ld = 1 )
+#order by seat_id
+
+select distinct a.seat_id
+from cinema as a 
+join cinema as b
+on abs(a.seat_id - b.seat_id) = 1
+and a.free = True and b.free = True
+order by a.seat_id
+
+
+
