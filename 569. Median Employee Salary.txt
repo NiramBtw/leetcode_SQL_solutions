@@ -1,0 +1,24 @@
+# median salary of each company
+# first thinking is to make a dummy table a,b then joing them 
+# base on the company then pick the mid 
+# first look on the 
+
+
+#select a.Id, a.Company , a.Salary
+#from Employee as a
+#left join Employee as b
+#on a.Company = b.Company
+#group by a.Company , a.Salary
+#having sum(case when a.Salary = b.Salary then 1 else 0 end ) >= 
+#ABS(sum(sign(a.Salary - b.Salary)))
+#order by a.Id
+
+with a as (
+    select id, company, salary, 
+            row_number() over (partition by company order by salary) as rn,
+            count(id) over (partition by company) as ct
+    from employee
+)
+select id, company, salary 
+from a 
+where rn between ct/2 and ct/2+1
