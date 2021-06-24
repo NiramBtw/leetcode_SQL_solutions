@@ -1,0 +1,15 @@
+# giving the length 
+# how to decide what is a triangle 
+# my first thinking is that the longest line need to be
+# longer then the other 2 lins + any 1 of them need to be more then half of the longest 1
+# 
+# fist need to find whats the long line using if 
+#select x,y,z ,if (x+y > z and x+z > y and y+z > x ,'Yes','No') as triangle
+#from triangle 
+
+# using case when and not if 
+select x, y, z, 
+case when x+y > z and x+z > y and y+z > x then 'Yes'
+    else 'No'
+end as triangle
+from triangle
